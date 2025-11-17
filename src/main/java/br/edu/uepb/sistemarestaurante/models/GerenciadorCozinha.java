@@ -1,13 +1,12 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Classe que representa o gerenciador da cozinha no sistema de restaurante.
- * Responsável por atualizar o status dos pedidos em preparação.
- * Utiliza credenciais fixas para autenticação no sistema.
+ * Classe que representa o gerenciador da cozinha no sistema de restaurante. Responsável por
+ * atualizar o status dos pedidos em preparação. Utiliza credenciais fixas para autenticação no
+ * sistema.
  *
  * @author Marcella Viana
  * @author Ruan Miguel
- * @author Letícia Cruz
  */
 
 public class GerenciadorCozinha extends Funcionario {
@@ -17,8 +16,8 @@ public class GerenciadorCozinha extends Funcionario {
 	private static final String SENHA_FIXA = "1234";
 
 	/**
-	 * Constrói uma instância do GerenciadorCozinha com credenciais pré-definidas.
-	 * As credenciais são fixas para simplificar o acesso do setor de cozinha.
+	 * Constrói uma instância do GerenciadorCozinha com credenciais pré-definidas. As credenciais
+	 * são fixas para simplificar o acesso do setor de cozinha.
 	 */
 	public GerenciadorCozinha() {
 		super(ID_FIXO, SENHA_FIXA);

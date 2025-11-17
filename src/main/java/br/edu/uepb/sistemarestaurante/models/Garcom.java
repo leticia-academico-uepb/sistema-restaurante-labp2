@@ -1,20 +1,19 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Classe que representa um garçom no sistema de restaurante.
- * Responsável por gerenciar pedidos e comandas das mesas.
+ * Classe que representa um garçom no sistema de restaurante. Responsável por gerenciar pedidos e
+ * comandas das mesas.
  *
  * @author Marcella Viana
  * @author Ruan Miguel
- * @author Letícia Cruz
- *
  */
+
 public class Garcom extends Funcionario {
 
 	/**
 	 * Construtor para criar uma instância de Garcom.
 	 *
-	 * @param id    Identificador único do garçom
+	 * @param id Identificador único do garçom
 	 * @param senha Senha de acesso do garçom
 	 */
 	public Garcom(String id, String senha) {
@@ -39,7 +38,7 @@ public class Garcom extends Funcionario {
 	/**
 	 * Anota um novo pedido para uma mesa específica.
 	 *
-	 * @param mesa  A mesa que está realizando o pedido
+	 * @param mesa A mesa que está realizando o pedido
 	 * @param pedido O pedido a ser anotado
 	 */
 	public static void anotarPedido(Mesa mesa, Pedido pedido) {
@@ -55,8 +54,10 @@ public class Garcom extends Funcionario {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!(obj instanceof Garcom garcom)) return false;
-        return getId().equals(garcom.getId());
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Garcom garcom))
+			return false;
+		return getId().equals(garcom.getId());
 	}
 }

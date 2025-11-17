@@ -1,26 +1,26 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Representa um item dentro de um pedido.
- * Contém o item do cardápio, a quantidade e observações adicionais do cliente.
+ * Representa um item dentro de um pedido. Contém o item do cardápio, a quantidade e observações
+ * adicionais do cliente.
  *
- * @author Laryssa D. Ramos
+ * @author Laryssa Dantas
  */
+
 public class ItemPedido {
-    /** Atributos da classe ItemPedido:
-     * - item: O item do cardápio que foi pedido
-     * - qtd: Quantidade do item pedida
-     * - obs: Observações adicionais do cliente sobre o item
+    /**
+     * Atributos da classe ItemPedido: - item: O item do cardápio que foi pedido - qtd: Quantidade
+     * do item pedida - obs: Observações adicionais do cliente sobre o item
      */
     private ItemCardapio item;
-   /**
-     * Quantidade do item pedida.
-     * Representa quantas unidades do item foram solicitadas pelo cliente.
+    /**
+     * Quantidade do item pedida. Representa quantas unidades do item foram solicitadas pelo
+     * cliente.
      */
     private int qtd;
     /**
-     * Observações adicionais do cliente sobre o item.
-     * Podem incluir preferências, alergias ou instruções especiais.
+     * Observações adicionais do cliente sobre o item. Podem incluir preferências, alergias ou
+     * instruções especiais.
      */
     private String obs;
 
@@ -37,7 +37,7 @@ public class ItemPedido {
         this.obs = obs;
     }
 
-    //GETTERS E SETTER
+    // GETTERS E SETTER
     /**
      * Retorna o item do cardápio.
      *
@@ -83,7 +83,7 @@ public class ItemPedido {
         this.obs = obs;
     }
 
-    //METODOS
+    // METODOS
     /**
      * Retorna uma representação textual do item no pedido.
      *
@@ -99,7 +99,7 @@ public class ItemPedido {
      *
      * @return subtotal (quantidade * preço unitário)
      */
-    public double CalcularSubtotal(){
+    public double CalcularSubtotal() {
         return this.item.getPreco() * this.qtd;
     }
 }

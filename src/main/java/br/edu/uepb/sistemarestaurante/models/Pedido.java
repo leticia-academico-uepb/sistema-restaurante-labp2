@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa um pedido feito no sistema de restaurante.
- * Contém uma lista de itens pedidos, horário de criação, status atual e um identificador único.
+ * Representa um pedido feito no sistema de restaurante. Contém uma lista de itens pedidos, horário
+ * de criação, status atual e um identificador único.
  *
- * @author Laryssa D. Ramos
+ * @author Laryssa Dantas
  */
 
 public class Pedido {
@@ -21,8 +21,8 @@ public class Pedido {
     private static List<Pedido> todosPedidos = new ArrayList<>();
 
     /**
-     * Construtor padrão.
-     * Inicializa o status como PENDENTE, define o horário atual de criação e atribui um ID único ao pedido.
+     * Construtor padrão. Inicializa o status como PENDENTE, define o horário atual de criação e
+     * atribui um ID único ao pedido.
      */
     public Pedido() {
         this.status = StatusPedido.PENDENTE;
@@ -37,8 +37,8 @@ public class Pedido {
         List<Pedido> pedidosFiltrados = new ArrayList<>();
 
         for (Pedido pedido : todosPedidos) {
-            if (pedido.getStatus() == StatusPedido.PENDENTE ||
-                    pedido.getStatus() == StatusPedido.PREPARANDO) {
+            if (pedido.getStatus() == StatusPedido.PENDENTE
+                    || pedido.getStatus() == StatusPedido.PREPARANDO) {
                 pedidosFiltrados.add(pedido);
             }
         }
@@ -46,7 +46,7 @@ public class Pedido {
         return pedidosFiltrados;
     }
 
-    //GETTERS
+    // GETTERS
     /**
      * Retorna o ID do pedido.
      *
@@ -83,7 +83,7 @@ public class Pedido {
         return itens;
     }
 
-    //MÉTODOS
+    // MÉTODOS
     /**
      * Retorna uma representação em String do pedido.
      *
@@ -91,10 +91,7 @@ public class Pedido {
      */
     @Override
     public String toString() {
-        return "Pedido #" + ID +
-                " {status: " + status +
-                ", horário: " + HORARIO +
-                '}';
+        return "Pedido #" + ID + " {status: " + status + ", horário: " + HORARIO + '}';
     }
 
     /**
@@ -104,7 +101,7 @@ public class Pedido {
      * @param qtd Quantidade do item
      * @param obs Observações sobre o item
      */
-    public void adicionarItem(ItemCardapio item, int qtd, String obs){
+    public void adicionarItem(ItemCardapio item, int qtd, String obs) {
         ItemPedido novoItem = new ItemPedido(item, qtd, obs);
         itens.add(novoItem);
         System.out.println("Item adicionado ao pedido");
@@ -117,7 +114,7 @@ public class Pedido {
      * @throws IllegalArgumentException se o item não estiver presente no pedido
      */
     public void removerItem(ItemPedido item) throws IllegalArgumentException {
-        if(itens.contains(item)){
+        if (itens.contains(item)) {
             itens.remove(item);
         } else {
             throw new IllegalArgumentException("O pedido não contém este item.");
@@ -129,28 +126,30 @@ public class Pedido {
      *
      * @return string contendo a descrição dos itens
      */
-    public String listarItens(){
+    public String listarItens() {
         String retorno = "";
-        for(ItemPedido i: itens){
+        for (ItemPedido i : itens) {
             retorno = retorno + i.toString() + "\n";
         }
         return retorno;
     }
 
     /**
-     * Altera o status do pedido para o próximo estado definido em {@link StatusPedido#novoStatus(StatusPedido)}.
+     * Altera o status do pedido para o próximo estado definido em
+     * {@link StatusPedido#novoStatus(StatusPedido)}.
      */
-    public void alterarStatus(){
+    public void alterarStatus() {
         this.status = StatusPedido.novoStatus(this.status);
     }
+
     /**
      * Calcula o total do pedido, somando os subtotais de todos os itens.
      *
      * @return total do pedido
      */
-    public double calcularTotal(){
+    public double calcularTotal() {
         double total = 0;
-        for(ItemPedido item : itens){
+        for (ItemPedido item : itens) {
             total += item.CalcularSubtotal();
         }
         return total;

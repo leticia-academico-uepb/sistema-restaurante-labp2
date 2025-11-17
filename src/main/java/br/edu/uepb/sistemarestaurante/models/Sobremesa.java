@@ -1,17 +1,17 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Classe que representa um item de sobremesa no cardápio do restaurante.
- * Herda de ItemCardapio e representa itens sobremesas do restaurante.
+ * Classe que representa um item de sobremesa no cardápio do restaurante. Herda de ItemCardapio e
+ * representa itens sobremesas do restaurante.
  *
- * @author Letícia
+ * @author Letícia Cruz
  */
 public class Sobremesa extends ItemCardapio {
 
     /**
      * Construtor para criar uma instância de Sobremesa.
      *
-     * @param nome  Nome da sobremesa (não pode ser nulo ou vazio)
+     * @param nome Nome da sobremesa (não pode ser nulo ou vazio)
      * @param preco Preço da sobremesa (deve ser positivo)
      * @throws IllegalArgumentException Se nome for nulo/vazio ou preço for negativo
      */

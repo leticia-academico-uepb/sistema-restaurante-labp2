@@ -14,40 +14,44 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 /**
- * Controlador para a tela de pedidos.
- * Responsável por exibir os pedidos de uma comanda específica.
+ * Controlador para a tela de pedidos. Responsável por exibir os pedidos de uma comanda específica.
  * Permite navegar de volta para a tela da mesa associada à comanda.
  *
- * @author Marcella Viana Lins
- * @author Ruan M da S. Costa
+ * @author Marcella Viana
+ * @author Ruan Miguel
  */
+
 public class TelaPedidosController {
 
-    /** Label que exibe o número da mesa associada à comanda.
-     * É atualizado quando a comanda é definida.
+    /**
+     * Label que exibe o número da mesa associada à comanda. É atualizado quando a comanda é
+     * definida.
      */
-    @FXML private Label numMesa;
-    /** Botão para voltar à tela da mesa.
-     * Aciona o método voltarTela quando clicado.
+    @FXML
+    private Label numMesa;
+    /**
+     * Botão para voltar à tela da mesa. Aciona o método voltarTela quando clicado.
      */
-    @FXML private Button botaoVoltar;
-    /** VBox que contém a lista de pedidos.
-     * A tela de pedidos será carregada dentro deste VBox.
+    @FXML
+    private Button botaoVoltar;
+    /**
+     * VBox que contém a lista de pedidos. A tela de pedidos será carregada dentro deste VBox.
      */
-    @FXML private VBox contentVBox;  // VBox onde a outra tela será inserida
+    @FXML
+    private VBox contentVBox; // VBox onde a outra tela será inserida
 
-    /** Caminho para a tela da mesa.
-     * Usado para retornar à tela da mesa associada à comanda.
+    /**
+     * Caminho para a tela da mesa. Usado para retornar à tela da mesa associada à comanda.
      */
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
-    /** Comanda associada a esta tela de pedidos.
-     * Contém os pedidos que serão exibidos.
+    /**
+     * Comanda associada a esta tela de pedidos. Contém os pedidos que serão exibidos.
      */
     private Comanda comanda;
 
     /**
-     * Método chamado ao inicializar a tela.
-     * Pode ser usado para configurações iniciais, se necessário.
+     * Método chamado ao inicializar a tela. Pode ser usado para configurações iniciais, se
+     * necessário.
      */
     @FXML
     private void initialize() {
@@ -55,8 +59,8 @@ public class TelaPedidosController {
     }
 
     /**
-     * Define a comanda associada a esta tela de pedidos.
-     * Atualiza o número da mesa e carrega a lista de pedidos.
+     * Define a comanda associada a esta tela de pedidos. Atualiza o número da mesa e carrega a
+     * lista de pedidos.
      *
      * @param comanda A comanda que contém os pedidos a serem exibidos.
      */
@@ -67,12 +71,13 @@ public class TelaPedidosController {
     }
 
     /**
-     * Carrega a tela de lista de pedidos e exibe os pedidos da comanda.
-     * Cada pedido é adicionado à interface gráfica.
+     * Carrega a tela de lista de pedidos e exibe os pedidos da comanda. Cada pedido é adicionado à
+     * interface gráfica.
      */
     private void carregarTelaListaPedidos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/TelaListaPedidos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass()
+                    .getResource("/br/edu/uepb/sistemarestaurante/views/TelaListaPedidos.fxml"));
             Parent telaLista = loader.load();
 
             TelaListaPedidosController controller = loader.getController();
@@ -88,8 +93,8 @@ public class TelaPedidosController {
     }
 
     /**
-     * Método acionado ao clicar no botão de voltar.
-     * Navega de volta para a tela da mesa associada à comanda.
+     * Método acionado ao clicar no botão de voltar. Navega de volta para a tela da mesa associada à
+     * comanda.
      *
      * @param event O evento de ação do botão.
      */

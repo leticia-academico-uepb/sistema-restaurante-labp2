@@ -8,12 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- * Controlador para gerenciar a exibição e interação com os pedidos na cozinha.
- * Permite visualizar detalhes do pedido e atualizar seu status.
+ * Controlador para gerenciar a exibição e interação com os pedidos na cozinha. Permite visualizar
+ * detalhes do pedido e atualizar seu status.
  *
- * @author Letícia B.M. da Cruz
- * @author Marcella Viana Lins
+ * @author Letícia Cruz
  */
+
 public class PedidoCozinhaController {
     private Runnable onPedidoPronto;
 
@@ -21,41 +21,53 @@ public class PedidoCozinhaController {
         this.onPedidoPronto = callback;
     }
 
-    /* * Elementos da interface gráfica (FXML)
+    /*
+     * * Elementos da interface gráfica (FXML)
      */
-    @FXML private Label numIDPedido;
-    /* * Label que exibe o ID do pedido.
+    @FXML
+    private Label numIDPedido;
+    /*
+     * * Label que exibe o ID do pedido.
      */
-    @FXML private Label horarioPedido;
-    /* * Label que exibe o horário do pedido.
+    @FXML
+    private Label horarioPedido;
+    /*
+     * * Label que exibe o horário do pedido.
      */
-    @FXML private Label statusPedido;
-    /* * Label que exibe o status atual do pedido.
+    @FXML
+    private Label statusPedido;
+    /*
+     * * Label que exibe o status atual do pedido.
      */
-    @FXML private VBox itensPedidoBox;
-    /** VBox que contém os itens do pedido.
+    @FXML
+    private VBox itensPedidoBox;
+    /**
+     * VBox que contém os itens do pedido.
      */
-    @FXML private Button botaoStatus;
+    @FXML
+    private Button botaoStatus;
 
-    /** Botão para atualizar o status do pedido.
-     * Quando clicado, chama o método para marcar o pedido como pronto ou entregue.
+    /**
+     * Botão para atualizar o status do pedido. Quando clicado, chama o método para marcar o pedido
+     * como pronto ou entregue.
      */
     private Pedido pedido;
-    /** Pedido atual que está sendo visualizado e gerenciado.
+    /**
+     * Pedido atual que está sendo visualizado e gerenciado.
      */
     private GerenciadorCozinha gc;
 
     /**
-     * Inicializa o controlador, configurando o botão de status.
-     * Este método é chamado automaticamente pelo JavaFX após a injeção dos elementos FXML.
+     * Inicializa o controlador, configurando o botão de status. Este método é chamado
+     * automaticamente pelo JavaFX após a injeção dos elementos FXML.
      */
     public void setGerenciadorCozinheiro(GerenciadorCozinha gc) {
         this.gc = gc;
     }
 
     /**
-     * Define o pedido a ser exibido e atualizado.
-     * Este método deve ser chamado antes de exibir a interface para garantir que o pedido esteja configurado.
+     * Define o pedido a ser exibido e atualizado. Este método deve ser chamado antes de exibir a
+     * interface para garantir que o pedido esteja configurado.
      *
      * @param pedido O pedido a ser exibido. Não pode ser null.
      * @throws IllegalArgumentException Se o pedido for null.
@@ -69,8 +81,8 @@ public class PedidoCozinhaController {
     }
 
     /**
-     * Atualiza a exibição dos detalhes do pedido na interface gráfica.
-     * Este método é chamado sempre que o pedido é alterado ou atualizado.
+     * Atualiza a exibição dos detalhes do pedido na interface gráfica. Este método é chamado sempre
+     * que o pedido é alterado ou atualizado.
      */
     private void atualizarBox() {
         numIDPedido.setText("Pedido #" + pedido.getID());
@@ -88,21 +100,21 @@ public class PedidoCozinhaController {
             }
         }
 
-        StatusPedido  statusAtual = pedido.getStatus();
+        StatusPedido statusAtual = pedido.getStatus();
         StatusPedido proximoStatus = StatusPedido.novoStatus(statusAtual);
-        if(proximoStatus !=null){
+        if (proximoStatus != null) {
             botaoStatus.setText("Marcar como " + proximoStatus);
             botaoStatus.setDisable(false);
             botaoStatus.setOnAction(e -> marcarComo());
-        }else{
+        } else {
             botaoStatus.setText("Entregue");
             botaoStatus.setDisable(true);
         }
     }
 
     /**
-     * Método chamado quando o botão de status é clicado.
-     * Atualiza o status do pedido e atualiza a exibição na interface gráfica.
+     * Método chamado quando o botão de status é clicado. Atualiza o status do pedido e atualiza a
+     * exibição na interface gráfica.
      *
      */
     @FXML

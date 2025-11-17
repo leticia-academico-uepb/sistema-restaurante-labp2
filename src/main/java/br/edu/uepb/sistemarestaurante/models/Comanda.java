@@ -2,14 +2,16 @@ package br.edu.uepb.sistemarestaurante.models;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * Classe que representa uma comanda em um restaurante.
- * Cada comanda está associada a uma mesa e a um garçom, e pode conter vários pedidos.
- * Possui métodos para adicionar pedidos, listar pedidos e calcular o total da comanda.
+ * Classe que representa uma comanda em um restaurante. Cada comanda está associada a uma mesa e a
+ * um garçom, e pode conter vários pedidos. Possui métodos para adicionar pedidos, listar pedidos e
+ * calcular o total da comanda.
  *
- * @author Marcella Viana da Silva Lins
- * @author Ruan M da S Costa
+ * @author Marcella Viana
+ * @author Ruan Miguel
  */
+
 public class Comanda {
     private static int qtd_instancias;
     private static List<Comanda> comandas = new ArrayList<>();
@@ -19,8 +21,8 @@ public class Comanda {
     private List<Pedido> pedidos;
 
     /**
-     * Construtor padrão que inicializa uma comanda sem mesa e garçom.
-     * A comanda recebe um ID único e é adicionada à lista de comandas.
+     * Construtor padrão que inicializa uma comanda sem mesa e garçom. A comanda recebe um ID único
+     * e é adicionada à lista de comandas.
      */
 
     public Comanda() {
@@ -29,11 +31,12 @@ public class Comanda {
         this.ID = qtd_instancias;
         comandas.add(this);
     }
+
     /**
-     * Construtor que inicializa uma comanda com uma mesa e um garçom específicos.
-     * A comanda recebe um ID único e é adicionada à lista de comandas.
+     * Construtor que inicializa uma comanda com uma mesa e um garçom específicos. A comanda recebe
+     * um ID único e é adicionada à lista de comandas.
      *
-     * @param mesa   A mesa associada à comanda
+     * @param mesa A mesa associada à comanda
      * @param garcom O garçom associado à comanda
      */
 
@@ -47,8 +50,8 @@ public class Comanda {
     }
 
     /**
-     * Método para adicionar um pedido à comanda.
-     * O pedido é adicionado à lista de pedidos da comanda e uma mensagem é exibida.
+     * Método para adicionar um pedido à comanda. O pedido é adicionado à lista de pedidos da
+     * comanda e uma mensagem é exibida.
      *
      * @param pedido O pedido a ser adicionado à comanda
      */
@@ -56,9 +59,10 @@ public class Comanda {
         pedidos.add(pedido);
         System.out.println("Pedido adicionado à comanda");
     }
+
     /**
-     * Método para listar todos os pedidos associados à comanda.
-     * Se não houver pedidos, exibe uma mensagem informando que nenhum pedido foi adicionado.
+     * Método para listar todos os pedidos associados à comanda. Se não houver pedidos, exibe uma
+     * mensagem informando que nenhum pedido foi adicionado.
      */
 
     public void listarPedido() {
@@ -71,15 +75,16 @@ public class Comanda {
             System.out.println(pedido.toString() + "\n");
         }
     }
+
     /**
      * Método para calcular o total da comanda, somando os totais de todos os pedidos.
      *
      * @return O total da comanda
      */
 
-    public double calcularTotal(){
+    public double calcularTotal() {
         double total = 0;
-        for(Pedido pedido : pedidos){
+        for (Pedido pedido : pedidos) {
             total += pedido.calcularTotal();
         }
         return total;

@@ -19,13 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Controller responsável por gerenciar a criação de novos pedidos para a coamnda de uma mesa no sistema de restaurante.
- * Permite selecionar itens do cardápio, adicionar observações, quantidades, e confirmar o pedido.
- * Interage com as entidades {@link Mesa}, {@link Comanda}, {@link Pedido}, {@link ItemPedido}, {@link ItemCardapio}, entre outras.
- * Utiliza DAOs e utilitários para manipular dados e trocar de telas.
+ * Controller responsável por gerenciar a criação de novos pedidos para a coamnda de uma mesa no
+ * sistema de restaurante. Permite selecionar itens do cardápio, adicionar observações, quantidades,
+ * e confirmar o pedido. Interage com as entidades {@link Mesa}, {@link Comanda}, {@link Pedido},
+ * {@link ItemPedido}, {@link ItemCardapio}, entre outras. Utiliza DAOs e utilitários para manipular
+ * dados e trocar de telas.
  *
- * @author Laryssa D. Ramos
- * @author Marcella Viana Lins
+ * @author Laryssa Dantas
+ * @author Marcella Viana
  */
 public class NovoPedidoController {
 
@@ -86,12 +87,15 @@ public class NovoPedidoController {
     /** Observação escrita pelo usuário para o item do pedido */
     private String obsEscrita;
     /** Lista de categorias do cardápio (Pratos, Bebidas, Sobremesas) */
-    private List<String> categoriasCardapio = new ArrayList<>(Arrays.asList("Pratos", "Bebidas", "Sobremesas"));
+    private List<String> categoriasCardapio =
+            new ArrayList<>(Arrays.asList("Pratos", "Bebidas", "Sobremesas"));
     /** ObservableList para as categorias do cardápio, usada no ComboBox */
-    private ObservableList<String> obsCategoriasCardapio = FXCollections.observableArrayList(categoriasCardapio);
+    private ObservableList<String> obsCategoriasCardapio =
+            FXCollections.observableArrayList(categoriasCardapio);
 
     /** Fábrica de valores para o Spinner de quantidade, com valores entre 1 e 50 */
-    private SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
+    private SpinnerValueFactory<Integer> valueFactory =
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
 
     /**
      * Define a mesa atual para a qual o pedido será feito.
@@ -106,7 +110,7 @@ public class NovoPedidoController {
     /**
      * Inicializa os seletores de cardápio, subcardápio, item e quantidade.
      */
-    public void carregarSeletores(){
+    public void carregarSeletores() {
         cardapio.setItems(obsCategoriasCardapio);
         carregarCBSubCardapio();
         carregarCBItem();
@@ -115,35 +119,33 @@ public class NovoPedidoController {
     }
 
     /**
-     * Carrega os tipos de subcardápio no ComboBox, caso a categoria selecionada no cardápio principal seja "Pratos" ou "Bebidas".
-     * Caso a categoria selecionada no cardápio principal seja "Sobremesas", atualiza a lista de itens para esta categoria e torna o ComboBox de subcardápio invisível.
+     * Carrega os tipos de subcardápio no ComboBox, caso a categoria selecionada no cardápio
+     * principal seja "Pratos" ou "Bebidas". Caso a categoria selecionada no cardápio principal seja
+     * "Sobremesas", atualiza a lista de itens para esta categoria e torna o ComboBox de subcardápio
+     * invisível.
      */
     public void carregarCBSubCardapio() {
         cardapioSelecionado = cardapio.getValue();
         cardapio.valueProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+            public void changed(ObservableValue<? extends String> observableValue, String s,
+                    String t1) {
                 cardapioSelecionado = cardapio.getValue();
 
-                if (cardapioSelecionado == null) return;
+                if (cardapioSelecionado == null)
+                    return;
 
                 switch (cardapioSelecionado) {
                     case "Pratos":
-                        subCardapio.setItems(FXCollections.observableArrayList(
-                                Arrays.stream(TipoPrato.values())
-                                        .map(TipoPrato::getTipo)
-                                        .toList()
-                        ));
+                        subCardapio.setItems(FXCollections.observableArrayList(Arrays
+                                .stream(TipoPrato.values()).map(TipoPrato::getTipo).toList()));
                         subCardapioContainer.setVisible(true);
                         subCardapioContainer.setManaged(true);
                         break;
 
                     case "Bebidas":
-                        subCardapio.setItems(FXCollections.observableArrayList(
-                                Arrays.stream(TipoBebida.values())
-                                        .map(TipoBebida::getTipo)
-                                        .toList()
-                        ));
+                        subCardapio.setItems(FXCollections.observableArrayList(Arrays
+                                .stream(TipoBebida.values()).map(TipoBebida::getTipo).toList()));
                         subCardapioContainer.setVisible(true);
                         subCardapioContainer.setManaged(true);
                         break;
@@ -154,7 +156,9 @@ public class NovoPedidoController {
 
                         ItensCardapioDAO dao = new ItensCardapioDAO();
                         List<String> sobremesas = new ArrayList<>();
-                        for(ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, cardapioSelecionado.equals("Sobremesas") ? null : subCardapioSelecionado)){
+                        for (ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado,
+                                cardapioSelecionado.equals("Sobremesas") ? null
+                                        : subCardapioSelecionado)) {
                             sobremesas.add(i.getNome());
                         }
                         item.setItems(FXCollections.observableArrayList(sobremesas));
@@ -168,22 +172,25 @@ public class NovoPedidoController {
     /**
      * Carrega no ComboBox os itens disponíveis, conforme o subcardápio selecionado.
      */
-    public void carregarCBItem(){
+    public void carregarCBItem() {
         cardapioSelecionado = cardapio.getValue();
         subCardapioSelecionado = subCardapio.getValue();
         subCardapio.valueProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+            public void changed(ObservableValue<? extends String> observableValue, String s,
+                    String t1) {
                 subCardapioSelecionado = subCardapio.getValue();
 
-                if (subCardapioSelecionado == null) return;
+                if (subCardapioSelecionado == null)
+                    return;
 
                 ItensCardapioDAO dao = new ItensCardapioDAO();
                 List<String> nomeItens = new ArrayList<>();
 
-                for(ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, subCardapioSelecionado)){
-                    if(i instanceof Bebida bebida) {
-                        nomeItens.add(i.getNome()+" - "+bebida.getStringVolume());
+                for (ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado,
+                        subCardapioSelecionado)) {
+                    if (i instanceof Bebida bebida) {
+                        nomeItens.add(i.getNome() + " - " + bebida.getStringVolume());
                     } else {
                         nomeItens.add(i.getNome());
                     }
@@ -209,8 +216,8 @@ public class NovoPedidoController {
     }
 
     /**
-     * Adiciona o item selecionado ao pedido atual com base nas seleções do usuário, ao clicar no botão "Adicionar item ao pedido".
-     * Realiza validações e exibe alertas em caso de erro.
+     * Adiciona o item selecionado ao pedido atual com base nas seleções do usuário, ao clicar no
+     * botão "Adicionar item ao pedido". Realiza validações e exibe alertas em caso de erro.
      */
     @FXML
     private void adicionarItemAoPedido() {
@@ -244,7 +251,8 @@ public class NovoPedidoController {
         ItensCardapioDAO dao = new ItensCardapioDAO();
         itemSelecionado = null;
 
-        for (ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, subCardapioSelecionado)) {
+        for (ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado,
+                subCardapioSelecionado)) {
             String nomeFormatado = i.getNome();
             if (i instanceof Bebida) {
                 nomeFormatado += " - " + ((Bebida) i).getStringVolume();
@@ -281,7 +289,8 @@ public class NovoPedidoController {
             // Atualiza os seletores (lista de categorias)
             carregarSeletores();
         } catch (Exception e) {
-            alertaUtils.mostrarAlerta("Erro", "Erro ao adicionar item ao pedido: " + e.getMessage());
+            alertaUtils.mostrarAlerta("Erro",
+                    "Erro ao adicionar item ao pedido: " + e.getMessage());
             e.printStackTrace(); // Para log ou debug
         }
     }
@@ -294,7 +303,7 @@ public class NovoPedidoController {
      */
     @FXML
     private void adicionarPedidoAComanda(ActionEvent event) throws IOException {
-        if(!novoPedido.getItens().isEmpty()) {
+        if (!novoPedido.getItens().isEmpty()) {
             Mesa.getMesas().get(numeroMesa).getComanda().adicionarPedido(novoPedido);
             janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
                 controller.setMesa(numeroMesa);
@@ -305,8 +314,8 @@ public class NovoPedidoController {
     }
 
     /**
-     * Metodo chamado automaticamente pelo JavaFX após o carregamento do FXML.
-     * Inicializa os seletores de cardápio e configura listeners.
+     * Metodo chamado automaticamente pelo JavaFX após o carregamento do FXML. Inicializa os
+     * seletores de cardápio e configura listeners.
      */
     @FXML
     public void initialize() {

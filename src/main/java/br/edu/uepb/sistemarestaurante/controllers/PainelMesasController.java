@@ -17,10 +17,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controlador responsável por gerenciar a tela do painel de mesas.
- * Permite que o {@link Garcom} visualize e acesse mesas, além de deslogar ou visualizar notificações.
+ * Controlador responsável por gerenciar a tela do painel de mesas. Permite que o {@link Garcom}
+ * visualize e acesse mesas, além de deslogar ou visualizar notificações.
  *
- * @author Marcella Viana da Silva Lins
+ * @author Marcella Viana
  */
 public class PainelMesasController {
 
@@ -32,15 +32,19 @@ public class PainelMesasController {
     private static final String COR_OUTRO_GARCOM = "#8BC34A";
 
     /** Componentes da interface gráfica */
-    @FXML private Button deslogar;
+    @FXML
+    private Button deslogar;
     /** Botão para abrir o menu de notificações */
-    @FXML private MenuButton menu;
+    @FXML
+    private MenuButton menu;
     /** Botão para acessar notificações */
-    @FXML private MenuItem notificacao;
+    @FXML
+    private MenuItem notificacao;
     /** Label para exibir o nome do garçom atual (opcional, comentado) */
-//    @FXML private Label nameMesas;
+    // @FXML private Label nameMesas;
     /** Botões representando as mesas disponíveis */
-    @FXML private Button mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8;
+    @FXML
+    private Button mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8;
 
     /** Garçom atualmente logado no sistema */
     private static Garcom garcomAtual;
@@ -54,8 +58,8 @@ public class PainelMesasController {
     private String telaNotificacoes = "/br/edu/uepb/sistemarestaurante/views/Notificacoes.fxml";
 
     /**
-     * Método chamado automaticamente pelo JavaFX após a carga do FXML.
-     * Configura os botões das mesas com base no estado atual de cada {@link Mesa}.
+     * Método chamado automaticamente pelo JavaFX após a carga do FXML. Configura os botões das
+     * mesas com base no estado atual de cada {@link Mesa}.
      */
 
     @FXML
@@ -80,7 +84,7 @@ public class PainelMesasController {
     public void setGarcomAtual(Garcom garcom) {
         garcomAtual = garcom;
         if (garcom != null) {
-//            nameMesas.setText("Garçom: " + garcom.getId());
+            // nameMesas.setText("Garçom: " + garcom.getId());
             atualizarTodasAsCores();
         }
     }
@@ -89,8 +93,8 @@ public class PainelMesasController {
     /**
      * Configura um botão de mesa com base no número da mesa e nas permissões do garçom.
      *
-     * @param botao       Botão correspondente à mesa.
-     * @param numeroMesa  Número identificador da mesa.
+     * @param botao Botão correspondente à mesa.
+     * @param numeroMesa Número identificador da mesa.
      */
 
     private void configurarMesa(Button botao, int numeroMesa) {
@@ -139,7 +143,7 @@ public class PainelMesasController {
      * Atualiza a cor de um botão de mesa com base na comanda associada.
      *
      * @param botao Botão da mesa.
-     * @param mesa  Objeto Mesa associado.
+     * @param mesa Objeto Mesa associado.
      */
 
     private void atualizarCorMesa(Button botao, Mesa mesa) {
@@ -157,8 +161,8 @@ public class PainelMesasController {
     /**
      * Abre a tela de detalhes da {@link Mesa} selecionada.
      *
-     * @param event        Evento de clique do botão.
-     * @param numeroMesa   Número da mesa selecionada.
+     * @param event Evento de clique do botão.
+     * @param numeroMesa Número da mesa selecionada.
      * @throws IOException Caso ocorra erro ao carregar a nova janela.
      */
 
@@ -169,7 +173,8 @@ public class PainelMesasController {
     }
 
     /**
-     * Realiza o logout do {@link Garcom} e redireciona para a tela de login: {@link LoginController}.
+     * Realiza o logout do {@link Garcom} e redireciona para a tela de login:
+     * {@link LoginController}.
      *
      * @throws IOException Caso ocorra erro ao carregar a tela de login.
      */

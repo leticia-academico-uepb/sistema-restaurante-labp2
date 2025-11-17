@@ -11,29 +11,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO (Data Access Object) para manipulação de dados de login dos garçons.
- * Responsável por ler username(id) e senha dos garçons armazenadas em arquivo texto.
+ * DAO (Data Access Object) para manipulação de dados de login dos garçons. Responsável por ler
+ * username(id) e senha dos garçons armazenadas em arquivo texto.
  *
- * @author Letícia B. M. da Cruz
+ * @author Letícia Cruz
  */
 public class GarcomLoginDAO {
-    /** Caminho do arquivo de armazenamento dos dados de login dos garçons.
-     * Este caminho deve ser relativo ao diretório de recursos do projeto.
-     * O arquivo será criado se não existir, com exemplos de uso.
+    /**
+     * Caminho do arquivo de armazenamento dos dados de login dos garçons. Este caminho deve ser
+     * relativo ao diretório de recursos do projeto. O arquivo será criado se não existir, com
+     * exemplos de uso.
      */
-    private static final String CAMINHO_ARQUIVO = "src/main/resources/br/edu/uepb/sistemarestaurante/garcom-login.txt";
+    private static final String CAMINHO_ARQUIVO =
+            "src/main/resources/br/edu/uepb/sistemarestaurante/garcom-login.txt";
 
     /**
-     * Construtor da classe GarcomLoginDAO.
-     * Cria o arquivo de armazenamento caso não exista.
+     * Construtor da classe GarcomLoginDAO. Cria o arquivo de armazenamento caso não exista.
      */
     public GarcomLoginDAO() {
         criarArquivo();
     }
 
     /**
-     * Verifica a existência do arquivo de armazenamento e cria um novo com exemplos
-     * caso o arquivo não exista.
+     * Verifica a existência do arquivo de armazenamento e cria um novo com exemplos caso o arquivo
+     * não exista.
      *
      */
     private void criarArquivo() {
@@ -59,8 +60,8 @@ public class GarcomLoginDAO {
     }
 
     /**
-     * Lista todos os garçons cadastrados no sistema a partir do arquivo de armazenamento.
-     * Ignora linhas de comentário (que começam com //) no arquivo.
+     * Lista todos os garçons cadastrados no sistema a partir do arquivo de armazenamento. Ignora
+     * linhas de comentário (que começam com //) no arquivo.
      *
      * @return Lista de objetos Garcom contendo username e senha
      */

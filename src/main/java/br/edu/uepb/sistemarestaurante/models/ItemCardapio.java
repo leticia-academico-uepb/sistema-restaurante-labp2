@@ -4,29 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe abstrata que representa um item genérico do cardápio de um restaurante.
- * Serve como base para outros tipos específicos de itens do cardápio (Prato, Sobremesa, Bebida).
- * Mantém uma lista estática compartilhada de todos os itens do cardápio criados.
+ * Classe abstrata que representa um item genérico do cardápio de um restaurante. Serve como base
+ * para outros tipos específicos de itens do cardápio (Prato, Sobremesa, Bebida). Mantém uma lista
+ * estática compartilhada de todos os itens do cardápio criados.
  *
- * @author Letícia B. M. da Cruz
  * @see Prato
  * @see Sobremesa
  * @see Bebida
+ * 
+ * @author Letícia Cruz
  */
 public abstract class ItemCardapio {
-    /** Atributos da classe ItemCardapio:
-     * - nome: Nome do item do cardápio
-     * - preco: Preço do item do cardápio
+    /**
+     * Atributos da classe ItemCardapio: - nome: Nome do item do cardápio - preco: Preço do item do
+     * cardápio
      */
     private String nome;
-    /** Preço do item do cardápio.
-     * Representa o custo do item em reais (R$).
+    /**
+     * Preço do item do cardápio. Representa o custo do item em reais (R$).
      */
     private double preco;
 
     /**
-     * Lista estática compartilhada que armazena todos os itens do cardápio criados.
-     * Acessível pelas subclasses (Prato, Sobremesa, Bebida).
+     * Lista estática compartilhada que armazena todos os itens do cardápio criados. Acessível pelas
+     * subclasses (Prato, Sobremesa, Bebida).
      */
     protected static List<ItemCardapio> itensCardapio = new ArrayList<>();
 
@@ -60,8 +61,8 @@ public abstract class ItemCardapio {
     }
 
     /**
-     * Retorna uma representação em string do item do cardápio,
-     * incluindo seu nome e preço formatado.
+     * Retorna uma representação em string do item do cardápio, incluindo seu nome e preço
+     * formatado.
      *
      * @return String formatada no padrão: "Nome | Preço: R$ X.XX"
      */

@@ -3,25 +3,21 @@ package br.edu.uepb.sistemarestaurante.models;
 /**
  * Enumeração que representa os tipos de pratos disponíveis no sistema de restaurante.
  * <p>
- * Cada constante enum representa uma categoria específica de prato.
- * Essa enumeração é usada para classificar e organizar as pratos do cardápio.
+ * Cada constante enum representa uma categoria específica de prato. Essa enumeração é usada para
+ * classificar e organizar as pratos do cardápio.
  * </p>
  *
- * @author Laryssa D. Ramos
- * @author Leticia B. M. da Cruz
+ * @author Laryssa Dantas
  */
+
 public enum TipoPrato {
     /**
-     * Tipos de pratos disponíveis:
-     * - ENTRADA: Representa pratos de entrada.
-     * - PRINCIPAL: Representa pratos principais.
-     * - ACOMPANHAMENTO: Representa acompanhamentos.
-     * - PRATO_FEITO: Representa pratos feitos.
+     * Tipos de pratos disponíveis: - ENTRADA: Representa pratos de entrada. - PRINCIPAL: Representa
+     * pratos principais. - ACOMPANHAMENTO: Representa acompanhamentos. - PRATO_FEITO: Representa
+     * pratos feitos.
      */
-    ENTRADA("Entradas"),
-    PRINCIPAL("Principais"),
-    ACOMPANHAMENTO("Acompanhamentos"),
-    PRATO_FEITO("Pratos Feitos");
+    ENTRADA("Entradas"), PRINCIPAL("Principais"), ACOMPANHAMENTO("Acompanhamentos"), PRATO_FEITO(
+            "Pratos Feitos");
 
     private final String tipo;
 
@@ -44,7 +40,8 @@ public enum TipoPrato {
     }
 
     /**
-     * Converte uma string representando o tipo de prato em uma constante da enumeração {@code TipoPrato}.
+     * Converte uma string representando o tipo de prato em uma constante da enumeração
+     * {@code TipoPrato}.
      *
      * @param tipo o nome da categoria de prato
      * @return a constante correspondente de {@code TipoPrato}

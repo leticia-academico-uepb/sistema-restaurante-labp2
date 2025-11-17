@@ -14,31 +14,36 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Controlador para gerenciar notificações de pedidos prontos.
- * Carrega e exibe os pedidos prontos na interface do usuário.
+ * Controlador para gerenciar notificações de pedidos prontos. Carrega e exibe os pedidos prontos na
+ * interface do usuário.
  *
- * @author Marcella Viana Lins
+ * @author Marcella Viana
  *
  */
 public class NotificacaoController {
-    /* * Caminho para a view do painel de mesas.
-     * Deve ser substituído pelo caminho correto no seu projeto.
+    /*
+     * * Caminho para a view do painel de mesas. Deve ser substituído pelo caminho correto no seu
+     * projeto.
      */
-    private static final String CAMINHO_PAINEL_MESA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PainelMesa.fxml";
+    private static final String CAMINHO_PAINEL_MESA_VIEW =
+            "/br/edu/uepb/sistemarestaurante/views/PainelMesa.fxml";
 
-    /* * Serviço de pedidos, responsável por gerenciar os pedidos.
-     * Deve ser injetado ou inicializado conforme a lógica do seu projeto.
+    /*
+     * * Serviço de pedidos, responsável por gerenciar os pedidos. Deve ser injetado ou inicializado
+     * conforme a lógica do seu projeto.
      */
-    @FXML private Button botaoVoltar;
+    @FXML
+    private Button botaoVoltar;
 
-    /* * Container onde os pedidos prontos serão exibidos.
-     * Deve ser definido no arquivo FXML correspondente.
+    /*
+     * * Container onde os pedidos prontos serão exibidos. Deve ser definido no arquivo FXML
+     * correspondente.
      */
     @FXML
     public VBox containerPedidos;
 
-    /* * Método chamado ao clicar no botão de voltar.
-     * Redireciona para a tela do painel de mesas.
+    /*
+     * * Método chamado ao clicar no botão de voltar. Redireciona para a tela do painel de mesas.
      */
     @FXML
     public void initialize() {
@@ -46,8 +51,7 @@ public class NotificacaoController {
     }
 
     /**
-     * Método chamado ao clicar no botão de voltar.
-     * Redireciona para a tela do painel de mesas.
+     * Método chamado ao clicar no botão de voltar. Redireciona para a tela do painel de mesas.
      *
      * @param event Evento de ação do botão
      * @throws IOException Se ocorrer um erro ao carregar a tela
@@ -57,19 +61,18 @@ public class NotificacaoController {
     }
 
     /**
-     * Carrega os pedidos prontos e os exibe na interface do usuário.
-     * Cada pedido é carregado em um item de notificação.
+     * Carrega os pedidos prontos e os exibe na interface do usuário. Cada pedido é carregado em um
+     * item de notificação.
      */
     private void carregarNotificacoes() {
-//        List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
+        // List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
         containerPedidos.getChildren().clear();
         List<Pedido> pedidosProntos = Collections.emptyList();
 
         for (Pedido pedido : pedidosProntos) {
             try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/br/edu/uepb/sistemarestaurante/views/PedidoNotificacaoController.fxml")
-                );
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                        "/br/edu/uepb/sistemarestaurante/views/PedidoNotificacaoController.fxml"));
                 HBox pedidoItem = loader.load();
 
                 PedidoNotificacaoController controller = loader.getController();
@@ -84,20 +87,19 @@ public class NotificacaoController {
     }
 
     /**
-     * Método para pegar os pedidos pendentes.
-     * Deve ser implementado conforme a lógica de negócios.
+     * Método para pegar os pedidos pendentes. Deve ser implementado conforme a lógica de negócios.
      *
      * @return Lista de pedidos pendentes
      */
     private List<Pedido> pegarPedidosPendentes() {
         // Implemente conforme sua lógica de negócios
-        //TODO: Retornar lista de pedidos pendentes
+        // TODO: Retornar lista de pedidos pendentes
         return new ArrayList<>();
     }
 
     /**
-     * Método para entregar um pedido.
-     * Atualiza o status do pedido para entregue e exibe uma mensagem.
+     * Método para entregar um pedido. Atualiza o status do pedido para entregue e exibe uma
+     * mensagem.
      *
      * @param pedido O pedido a ser entregue
      */

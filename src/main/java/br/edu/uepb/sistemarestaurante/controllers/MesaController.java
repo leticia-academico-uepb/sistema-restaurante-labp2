@@ -15,91 +15,93 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Controller responsável por gerenciar a tela de visualização e controle de uma {@link Mesa} do restaurante e sua {@link Comanda}.
+ * Controller responsável por gerenciar a tela de visualização e controle de uma {@link Mesa} do
+ * restaurante e sua {@link Comanda}.
  *
- * Permite ao garçom criar, vizualizar e fechar a comanda da mesa.
- * Redireciona para as telas que permitem adicionar pedidos à comanda e vizualizar detalhadamente os pedidos da comanda.
+ * Permite ao garçom criar, vizualizar e fechar a comanda da mesa. Redireciona para as telas que
+ * permitem adicionar pedidos à comanda e vizualizar detalhadamente os pedidos da comanda.
  *
- * @author Laryssa D. Ramos
- * @author Marcella Viana Lins
+ * @author Laryssa Dantas
+ * @author Marcella Viana
  */
 public class MesaController {
 
     /**
-     * Botões e labels da interface.
-     * Utilizados para interagir com a mesa e comanda.
+     * Botões e labels da interface. Utilizados para interagir com a mesa e comanda.
      */
     @FXML
     private Button botaoAddPedido;
 
-    /** Botão para fechar a comanda da mesa.
-     * Redireciona para o painel de mesas após fechar a comanda.
+    /**
+     * Botão para fechar a comanda da mesa. Redireciona para o painel de mesas após fechar a
+     * comanda.
      */
     @FXML
     private Button botaoFecharComanda;
 
     /**
-     * Botão para vizualizar os pedidos da comanda.
-     * Redireciona para a tela que permite vizualizar detalhadamente os pedidos da comanda.
+     * Botão para vizualizar os pedidos da comanda. Redireciona para a tela que permite vizualizar
+     * detalhadamente os pedidos da comanda.
      */
     @FXML
     private Button botaoVerPedidos;
 
     /**
-     * Botão para voltar ao painel de mesas.
-     * Redireciona para a tela inicial do sistema de restaurante.
+     * Botão para voltar ao painel de mesas. Redireciona para a tela inicial do sistema de
+     * restaurante.
      */
     @FXML
     private Button botaoVoltar;
 
     /**
-     * Labels para exibir informações da mesa e comanda.
-     * Exibem o número da mesa, número da comanda e total da comanda.
+     * Labels para exibir informações da mesa e comanda. Exibem o número da mesa, número da comanda
+     * e total da comanda.
      */
     @FXML
     private Label numComanda;
 
-    /* * Label para exibir o número da mesa.
-     * Exibe o número da mesa atual que está sendo visualizada.
+    /*
+     * * Label para exibir o número da mesa. Exibe o número da mesa atual que está sendo
+     * visualizada.
      */
     @FXML
     private Label numMesa;
 
     /**
-     * Label para exibir o total da comanda.
-     * Exibe o valor total dos pedidos na comanda da mesa.
+     * Label para exibir o total da comanda. Exibe o valor total dos pedidos na comanda da mesa.
      */
     @FXML
     private Label totalComanda;
 
     /**
-     * Container onde os pedidos da comanda serão exibidos.
-     * Utiliza VBox para organizar os pedidos verticalmente.
+     * Container onde os pedidos da comanda serão exibidos. Utiliza VBox para organizar os pedidos
+     * verticalmente.
      */
     @FXML
     private VBox vboxPedidos;
 
     /**
-     * Caminhos para as views FXML utilizadas neste controlador.
-     * Esses caminhos são relativos ao diretório de recursos do projeto.
+     * Caminhos para as views FXML utilizadas neste controlador. Esses caminhos são relativos ao
+     * diretório de recursos do projeto.
      */
     private String painelMesas = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";
-    /** Caminho para a view FXML que representa a tela de adicionar um novo pedido.
-     * Este caminho deve apontar para o arquivo FXML que define a interface de um novo pedido.
+    /**
+     * Caminho para a view FXML que representa a tela de adicionar um novo pedido. Este caminho deve
+     * apontar para o arquivo FXML que define a interface de um novo pedido.
      */
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
-    /** Caminho para a view FXML que representa a tela de vizualização dos pedidos da comanda.
-     * Este caminho deve apontar para o arquivo FXML que define a interface de vizualização dos pedidos.
+    /**
+     * Caminho para a view FXML que representa a tela de vizualização dos pedidos da comanda. Este
+     * caminho deve apontar para o arquivo FXML que define a interface de vizualização dos pedidos.
      */
     private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/TelaPedidos.fxml";
     /**
-     * Número da mesa atual que está sendo visualizada.
-     * Utilizado para carregar os dados da mesa e comanda.
+     * Número da mesa atual que está sendo visualizada. Utilizado para carregar os dados da mesa e
+     * comanda.
      */
     private int numeroMesa;
     /**
-     * Garçom responsável pela mesa atual.
-     * Utilizado para associar a comanda ao garçom correto.
+     * Garçom responsável pela mesa atual. Utilizado para associar a comanda ao garçom correto.
      */
     private Garcom garcom;
 
@@ -126,8 +128,8 @@ public class MesaController {
     }
 
     /**
-     * Carrega os dados da mesa atual, atualizando os labels na interface.
-     * Verifica se a mesa está ocupada e preenche os valores da comanda.
+     * Carrega os dados da mesa atual, atualizando os labels na interface. Verifica se a mesa está
+     * ocupada e preenche os valores da comanda.
      */
     public void carregarDadosMesa() {
         if (Mesa.getMesas().get(numeroMesa) == null) {
@@ -190,36 +192,41 @@ public class MesaController {
     }
 
     /**
-     * Manipula o clique no botão "Adicionar Pedido". Se a mesa estiver desocupada, a mesa é ocupada e é criada uma nova comanda.
-     * Em seguida, redireciona para a tela de adicionar pedido à comanda.
+     * Manipula o clique no botão "Adicionar Pedido". Se a mesa estiver desocupada, a mesa é ocupada
+     * e é criada uma nova comanda. Em seguida, redireciona para a tela de adicionar pedido à
+     * comanda.
      *
      * @param event o evento de clique no botão
      * @throws IOException se a tela não puder ser carregada
      */
     @FXML
     private void chamarAddPedido(ActionEvent event) throws IOException {
-        if(!Mesa.getMesas().get(numeroMesa).isOcupada()){
+        if (!Mesa.getMesas().get(numeroMesa).isOcupada()) {
             Mesa.getMesas().get(numeroMesa).ocupar();
-            Mesa.getMesas().get(numeroMesa).setComanda(new Comanda(Mesa.getMesas().get(numeroMesa), this.garcom));
+            Mesa.getMesas().get(numeroMesa)
+                    .setComanda(new Comanda(Mesa.getMesas().get(numeroMesa), this.garcom));
         }
 
-        janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido", (NovoPedidoController controller) -> {
-            controller.setMesa(numeroMesa);
-        });
+        janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido",
+                (NovoPedidoController controller) -> {
+                    controller.setMesa(numeroMesa);
+                });
     }
 
     /**
-     * Manipula o clique no botão "Ver Pedidos", redirecionando para a tela que permite vizualizar detalhadamente os pedidos da comanda.
+     * Manipula o clique no botão "Ver Pedidos", redirecionando para a tela que permite vizualizar
+     * detalhadamente os pedidos da comanda.
      *
      * @param event o evento de clique no botão "Ver Pedidos"
      * @throws IOException se houver erro ao mudar de tela
      */
     @FXML
     private void chamarVerPedidos(ActionEvent event) throws IOException {
-        if(Mesa.getMesas().get(numeroMesa).isOcupada()){
-            janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (TelaPedidosController controller) -> {
-                controller.setComanda(Mesa.getMesas().get(numeroMesa).getComanda());
-            });
+        if (Mesa.getMesas().get(numeroMesa).isOcupada()) {
+            janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos",
+                    (TelaPedidosController controller) -> {
+                        controller.setComanda(Mesa.getMesas().get(numeroMesa).getComanda());
+                    });
         } else {
             alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
@@ -233,7 +240,7 @@ public class MesaController {
      */
     @FXML
     private void fecharComanda(ActionEvent event) throws IOException {
-        if(Mesa.getMesas().get(numeroMesa).isOcupada()){
+        if (Mesa.getMesas().get(numeroMesa).isOcupada()) {
             Mesa.getMesas().get(numeroMesa).liberar();
             Mesa.getMesas().get(numeroMesa).setComanda(null);
             carregarDadosMesa();

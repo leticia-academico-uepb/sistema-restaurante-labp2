@@ -1,17 +1,17 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Classe que representa uma bebida no cardápio do restaurante.
- * Herda de ItemCardapio e adiciona características específicas de bebidas.
+ * Classe que representa uma bebida no cardápio do restaurante. Herda de ItemCardapio e adiciona
+ * características específicas de bebidas.
  *
- * @author Letícia B.M. da Cruz
+ * @author Letícia Cruz
  */
 public class Bebida extends ItemCardapio {
     /**
      * Enumeração que define os tipos de bebidas disponíveis.
      */
     private TipoBebida tipo;
-   /**
+    /**
      * Enumeração que define os volumes disponíveis para as bebidas.
      */
     private VolumeBebida volume;
@@ -19,9 +19,9 @@ public class Bebida extends ItemCardapio {
     /**
      * Construtor para criar uma instância de Bebida.
      *
-     * @param nome   Nome da bebida
-     * @param preco  Preço da bebida
-     * @param tipo   Tipo da bebida (enum TipoBebida)
+     * @param nome Nome da bebida
+     * @param preco Preço da bebida
+     * @param tipo Tipo da bebida (enum TipoBebida)
      * @param volume Volume da bebida (enum VolumeBebida)
      * @throws IllegalArgumentException Se algum parâmetro for inválido
      */
@@ -57,8 +57,8 @@ public class Bebida extends ItemCardapio {
      */
     @Override
     public String toString() {
-        return String.format("%s [Tipo: %s, Volume: %s, Preço: R$%.2f]",
-                getNome(), tipo, volume, getPreco());
+        return String.format("%s [Tipo: %s, Volume: %s, Preço: R$%.2f]", getNome(), tipo, volume,
+                getPreco());
     }
 
     /**
@@ -66,7 +66,7 @@ public class Bebida extends ItemCardapio {
      *
      * @return String formatada do volume da bebida
      */
-    public String getStringVolume(){
+    public String getStringVolume() {
         return volume.getVolume();
     }
 }

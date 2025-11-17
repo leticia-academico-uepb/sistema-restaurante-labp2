@@ -10,34 +10,42 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 /**
- * Controlador para exibir notificações de pedidos para o garçom.
- * Permite que o garçom entregue pedidos e atualize seu status.
+ * Controlador para exibir notificações de pedidos para o garçom. Permite que o garçom entregue
+ * pedidos e atualize seu status.
  *
- * @author Letícia B.M. da Cruz
- * @author Marcella Viana Lins
+ * @author Letícia Cruz
  */
-public class PedidoNotificacaoController {
-    /* * Elementos da interface gráfica (FXML)
-     * Estes elementos são injetados pelo JavaFX quando o arquivo FXML é carregado.
-     */
-    @FXML private Label labelPedido;
-    /* * Elementos que exibem informações do pedido
-     * Este elemento é usado para exibir o número do pedido.
-     */
-    @FXML private Label labelMesa;
-    /** Elementos que exibem informações do pedido
-     * Este elemento é usado para exibir a mesa associada ao pedido.
-     */
-    @FXML private Button botaoEntregar;
 
-    /** Elementos que exibem informações do pedido
-     * Este elemento é usado para exibir o botão de entrega do pedido.
+public class PedidoNotificacaoController {
+    /*
+     * * Elementos da interface gráfica (FXML) Estes elementos são injetados pelo JavaFX quando o
+     * arquivo FXML é carregado.
+     */
+    @FXML
+    private Label labelPedido;
+    /*
+     * * Elementos que exibem informações do pedido Este elemento é usado para exibir o número do
+     * pedido.
+     */
+    @FXML
+    private Label labelMesa;
+    /**
+     * Elementos que exibem informações do pedido Este elemento é usado para exibir a mesa associada
+     * ao pedido.
+     */
+    @FXML
+    private Button botaoEntregar;
+
+    /**
+     * Elementos que exibem informações do pedido Este elemento é usado para exibir o botão de
+     * entrega do pedido.
      */
     private Pedido pedidoAtual;
-    /* * Pedido atual que está sendo exibido.
-     * Este objeto contém informações sobre o pedido, como número, mesa e status.
+    /*
+     * * Pedido atual que está sendo exibido. Este objeto contém informações sobre o pedido, como
+     * número, mesa e status.
      */
-    private Garcom garcom;  // Equivalente ao GerenciadorCozinha
+    private Garcom garcom; // Equivalente ao GerenciadorCozinha
 
     /**
      * Construtor que inicializa o controlador com o garçom responsável.
@@ -56,7 +64,7 @@ public class PedidoNotificacaoController {
      * @param pedido Objeto Pedido contendo detalhes do pedido
      */
     public void setPedidoInfo(String numeroPedido, String mesa, Pedido pedido) {
-        labelPedido.setText("Pedido #"+numeroPedido);
+        labelPedido.setText("Pedido #" + numeroPedido);
         labelMesa.setText("- Mesa " + mesa);
         this.pedidoAtual = pedido;
 

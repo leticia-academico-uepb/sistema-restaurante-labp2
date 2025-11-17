@@ -1,17 +1,20 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 /**
- * Representa um prato principal do cardápio do restaurante.
- * Herda de {@link ItemCardapio} e adiciona a característica de tipo de prato.
- * Ao ser instanciado, o prato é automaticamente adicionado à lista compartilhada de itens do cardápio.
+ * Representa um prato principal do cardápio do restaurante. Herda de {@link ItemCardapio} e
+ * adiciona a característica de tipo de prato. Ao ser instanciado, o prato é automaticamente
+ * adicionado à lista compartilhada de itens do cardápio.
  *
- * @author Letícia B. M. da Cruz
  * @see ItemCardapio
  * @see TipoPrato
+ * 
+ * @author Letícia Cruz
  */
+
 public class Prato extends ItemCardapio {
     /**
      * O tipo do prato (entrada, principal, acompanhamento, etc.)
+     * 
      * @see TipoPrato
      */
     private TipoPrato tipo;
@@ -40,8 +43,7 @@ public class Prato extends ItemCardapio {
     }
 
     /**
-     * Retorna uma representação em string do prato,
-     * incluindo nome, preço e tipo formatados.
+     * Retorna uma representação em string do prato, incluindo nome, preço e tipo formatados.
      *
      * @return String formatada no padrão: "Nome [Tipo] | Preço: R$ X.XX"
      */
