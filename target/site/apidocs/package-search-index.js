@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"br.edu.uepb.sistemarestaurante","l":"br.edu.uepb.sistemarestaurante"},{"m":"br.edu.uepb.sistemarestaurante","l":"br.edu.uepb.sistemarestaurante.controllers"},{"m":"br.edu.uepb.sistemarestaurante","l":"br.edu.uepb.sistemarestaurante.models"}];updateSearchResults();
