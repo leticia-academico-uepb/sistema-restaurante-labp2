@@ -1,7 +1,4 @@
-target/classes
-target/generated-sources
-target/test-classes
-target/maven-javadoc-plugin-stale-data.txt
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
